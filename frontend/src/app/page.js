@@ -1,40 +1,22 @@
-export const metadata = {
-  title: "Your Artist Name | Contemporary Artist",
-  description:
-    "Official portfolio website showcasing paintings, digital artwork, exhibitions, and commissions.",
-  keywords: [
-    "artist",
-    "art portfolio",
-    "paintings",
-    "digital artist",
-    "modern art",
-  ],
-  openGraph: {
-    title: "Your Artist Name",
-    description: "Contemporary artist portfolio website",
-    images: ["/hero.jpg"],
-  },
-};
-
-const artworks = [
-  {
-    title: "Dreamscape",
-    image:
-      "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Golden Horizon",
-    image:
-      "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
-  },
-  {
-    title: "Silent Forest",
-    image:
-      "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=1200&auto=format&fit=crop",
-  },
-];
-
 export default function Home() {
+  const artworks = [
+    {
+      title: "Dreamscape",
+      image:
+        "https://images.unsplash.com/photo-1547891654-e66ed7ebb968?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Golden Horizon",
+      image:
+        "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?q=80&w=1200&auto=format&fit=crop",
+    },
+    {
+      title: "Silent Forest",
+      image:
+        "https://images.unsplash.com/photo-1515405295579-ba7b45403062?q=80&w=1200&auto=format&fit=crop",
+    },
+  ];
+
   return (
     <main className="bg-black text-white min-h-screen">
       {/* Hero */}
@@ -55,25 +37,33 @@ export default function Home() {
         </a>
       </section>
 
-      {/* About */}
-      <section className="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-2 gap-12 items-center">
-        <img
-          src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=1200&auto=format&fit=crop"
-          alt="Artist portrait"
-          className="rounded-3xl"
-        />
-
-        <div>
-          <h2 className="text-5xl font-bold mb-6">About</h2>
-
-          <p className="text-neutral-300 leading-relaxed text-lg">
-            My artistic journey explores human emotion, memory, and movement.
-            Through mixed media and digital expression, I create immersive visual
-            narratives.
-          </p>
-        </div>
-      </section>
-
       {/* Gallery */}
       <section id="gallery" className="px-6 py-24 bg-neutral-950">
+        <div className="max-w-7xl mx-auto">
+          <h2 className="text-5xl font-bold mb-14 text-center">
+            Featured Artwork
+          </h2>
+
+          <div className="grid md:grid-cols-3 gap-8">
+            {artworks.map((art, index) => (
+              <div
+                key={index}
+                className="bg-neutral-900 rounded-3xl overflow-hidden"
+              >
+                <img
+                  src={art.image}
+                  alt={art.title}
+                  className="h-80 w-full object-cover"
+                />
+
+                <div className="p-6">
+                  <h3 className="text-2xl font-semibold">{art.title}</h3>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    </main>
+  );
 }
